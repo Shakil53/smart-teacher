@@ -1,19 +1,25 @@
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../../Shared/SocialLogin';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContex } from '../../Provider/AuthProvider';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from "firebase/auth";
+import { app } from '../../Firebase/Firebasa.config';
 
+
+
+const auth = getAuth(app);
 const SignUp = () => {
-    // const createUser = useContext(AuthContex);
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
+
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
         console.log(data)
-        // createUser(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user)
-        //     })
+        createUserWithEmailAndPassword(auth, data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+            })
+        reset()
     };
     return (
         <div className="hero min-h-screen bg-base-200 h-screen bg-loginBg bg-no-repeat">
@@ -30,6 +36,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
+
                             <input type="name" {...register("name", { required: true })} name='name' placeholder="name" className="input input-bordered" />
 
                             {/* name field is required error message */}
@@ -39,7 +46,8 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Photo Url</span>
                             </label>
-                            <input type="name" {...register("photoURL", { required: true })} placeholder="photo url" className="input input-bordered" />
+
+                            <input type="name"  {...register("photoURL")} name='photoUrl' placeholder="photo url" className="input input-bordered" />
 
                             {/* name field is required error message */}
                             {errors.photoURL && <span><small className='text-red-500'>Photo Url is Required</small></span>}
@@ -48,6 +56,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
+
                             <input type="email" {...register("email")} name='email' required placeholder="email" className="input input-bordered" />
 
                         </div>
@@ -55,6 +64,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
+
                             <input type="password" {...register("password", {
                                 required: true,
                                 minLength: 6,
@@ -71,16 +81,6 @@ const SignUp = () => {
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
-
-                        {/* captcha
-                        <div className="form-control">
-
-                            <LoadCanvasTemplate />
-                            <input ref={captchaRef} type="password" name='password' placeholder="type the text above" className="input input-bordered" />
-                        </div>
-                        <div>
-                            <button onClick={handleValidateCaptcha} className="btn btn-outline btn-xs">Validate</button>
-                        </div> */}
 
                         <div className="form-control mt-6">
                             {/* <button className="btn btn-primary">Login</button> */}

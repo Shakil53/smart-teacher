@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../Shared/SocialLogin";
 import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
-import { useContext, useEffect } from "react";
-import { AuthContex } from "../../Provider/AuthProvider";
+import { useEffect } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../../Firebase/Firebasa.config";
 
-
-
+const auth = getAuth(app);
 
 const LogIn = () => {
     // const signInUser = useContext(AuthContex);
@@ -18,14 +18,14 @@ const LogIn = () => {
         const password = form.password.value;
         console.log(email, password)
 
-        // signInUser(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user)
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
-        //     })
+        signInWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     }
 
