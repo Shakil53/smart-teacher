@@ -1,11 +1,19 @@
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../../Shared/SocialLogin';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContex } from '../../Provider/AuthProvider';
 
 const SignUp = () => {
+    // const createUser = useContext(AuthContex);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
+        // createUser(email, password)
+        //     .then(result => {
+        //         const user = result.user;
+        //         console.log(user)
+        //     })
     };
     return (
         <div className="hero min-h-screen bg-base-200 h-screen bg-loginBg bg-no-repeat">

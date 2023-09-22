@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../Shared/SocialLogin";
 import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContex } from "../../Provider/AuthProvider";
+
+
 
 
 const LogIn = () => {
+    // const signInUser = useContext(AuthContex);
 
 
     const handleLogin = (event) => {
@@ -13,10 +17,14 @@ const LogIn = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        // signIn(email, password)
+
+        // signInUser(email, password)
         //     .then(result => {
         //         const user = result.user;
         //         console.log(user)
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
         //     })
 
     }
