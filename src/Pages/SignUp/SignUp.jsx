@@ -5,17 +5,20 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { getAuth } from "firebase/auth";
 import { app } from '../../Firebase/Firebasa.config';
 import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { AuthContex } from '../../Provider/AuthProvider';
 
 
 
 const auth = getAuth(app);
 const SignUp = () => {
+    const { createUser } = useContext(AuthContex)
 
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         console.log(data)
-        createUserWithEmailAndPassword(auth, data.email, data.password)
+        createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)

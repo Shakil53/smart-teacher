@@ -6,7 +6,7 @@ import { getAuth } from "firebase/auth";
 
 
 
-export const AuthContex = createContext(null)
+export const AuthContex = createContext()
 const auth = getAuth(app);
 
 

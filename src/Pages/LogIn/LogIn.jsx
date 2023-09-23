@@ -5,11 +5,13 @@ import { useEffect } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../Firebase/Firebasa.config";
 import Swal from "sweetalert2";
+import { AuthContex } from "../../Provider/AuthProvider";
+import { useContext } from "react";
 
 const auth = getAuth(app);
 
 const LogIn = () => {
-    // const signInUser = useContext(AuthContex);
+    const { signInUser } = useContext(AuthContex);
 
 
 
@@ -21,7 +23,7 @@ const LogIn = () => {
         const password = form.password.value;
         console.log(email, password)
 
-        signInWithEmailAndPassword(auth, email, password)
+        signInUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
