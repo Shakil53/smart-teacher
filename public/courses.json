@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "course_title": "Research and Development",
+        "rating": 45,
+        "price": 39,
+        "image": "https://ibb.co/QKsDw1y"
+    },
+    {
+        "id": 2,
+        "course_title": "Product Management",
+        "rating": 61,
+        "price": 117,
+        "image": "https://ibb.co/QpRSzSf"
+    },
+    {
+        "id": 3,
+        "course_title": "Business Development",
+        "rating": 33,
+        "price": 173,
+        "image": "https://ibb.co/6RLHXP8"
+    },
+    {
+        "id": 4,
+        "course_title": "Engineering",
+        "rating": 63,
+        "price": 363,
+        "image": "https://ibb.co/rt7rhXX"
+    },
+    {
+        "id": 5,
+        "course_title": "Research and Development",
+        "rating": 63,
+        "price": 173,
+        "image": "https://ibb.co/QKsDw1y"
+    },
+    {
+        "id": 6,
+        "course_title": "Training",
+        "rating": 63,
+        "price": 63,
+        "image": "https://ibb.co/rt7rhXX"
+    },
+    {
+        "id": 7,
+        "course_title": "Business Development",
+        "rating": 63,
+        "price": 76,
+        "image": "https://ibb.co/QpRSzSf"
+    },
+    {
+        "id": 8,
+        "course_title": "Engineering",
+        "rating": 12,
+        "price": 43,
+        "image": "https://ibb.co/6RLHXP8"
+    },
+    {
+        "id": 9,
+        "course_title": "Training self Development",
+        "rating": 3,
+        "price": 69,
+        "image": "https://ibb.co/rt7rhXX"
+    },
+    {
+        "id": 10,
+        "course_title": "Training self Development",
+        "rating": 6,
+        "price": 10,
+        "image": "https://ibb.co/QpRSzSf"
+    }
+]

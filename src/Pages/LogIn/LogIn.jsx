@@ -4,11 +4,14 @@ import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
 import { useEffect } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../Firebase/Firebasa.config";
+import Swal from "sweetalert2";
 
 const auth = getAuth(app);
 
 const LogIn = () => {
     // const signInUser = useContext(AuthContex);
+
+
 
 
     const handleLogin = (event) => {
@@ -22,11 +25,25 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Login Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
             .catch(error => {
                 console.log(error)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Wrong Password',
+                    showConfirmButton: false,
+                    timer: 800
+                })
             })
-
+        form.reset();
     }
 
 

@@ -1,16 +1,17 @@
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../../Shared/SocialLogin';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { getAuth } from "firebase/auth";
 import { app } from '../../Firebase/Firebasa.config';
+import Swal from 'sweetalert2';
 
 
 
 const auth = getAuth(app);
 const SignUp = () => {
 
-
+    const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         console.log(data)
@@ -18,7 +19,15 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Register Successful, Please Login',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
             })
+        navigate('/login')
         reset()
     };
     return (
