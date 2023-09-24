@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContex } from '../Provider/AuthProvider';
+
 
 const NavBar = () => {
+    const { signInUser } = useContext(AuthContex)
 
     const nabOptions = <>
         <li><Link to='/'>Home</Link></li>
@@ -19,14 +23,18 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-7 text-bold">
-                    {/* TODO: li dynamic */}
+
                     {nabOptions}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn">Log in</Link>
+                {
+                    signInUser ? < Link to='/login' className="btn">Logout</Link> :
+                        <Link to='/login' className="btn">Log in</Link>
+                }
+
             </div>
-        </div>
+        </div >
     );
 };
 
